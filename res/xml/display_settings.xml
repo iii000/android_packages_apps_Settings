@@ -53,6 +53,11 @@
                 android:dialogTitle="@string/dialog_title_font_size" />
 
         <PreferenceScreen
+                android:fragment="org.omnirom.omnigears.chameleonos.ActiveDisplaySettings"
+                android:key="active_display"
+                android:title="@string/ad_settings_title" />
+    
+            <PreferenceScreen
                 android:fragment="com.android.settings.notificationlight.NotificationLightSettings"
                 android:key="notification_led"
                 android:title="@string/notification_led_category_title" />
