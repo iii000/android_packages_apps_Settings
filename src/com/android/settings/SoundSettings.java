@@ -87,6 +87,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
+    private static final String KEY_VOL_MEDIA = "volume_keys_control_media_stream";
 
     // Request code for power notification ringtone picker
     private static final int REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE = 1;
@@ -112,6 +113,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
     private CheckBoxPreference mVolumeWakeScreen;
+    private CheckBoxPreference mVolumeKeysControlMedia;
 
     private CheckBoxPreference mPowerSounds;
     private CheckBoxPreference mPowerSoundsVibrate;
@@ -205,6 +207,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mSafeHeadsetVolume.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.SAFE_HEADSET_VOLUME, 1) != 0);
         mSafeHeadsetVolume.setOnPreferenceChangeListener(this);
+
+        mVolumeKeysControlMedia = (CheckBoxPreference) findPreference(KEY_VOL_MEDIA);
+        mVolumeKeysControlMedia.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.VOLUME_KEYS_CONTROL_MEDIA_STREAM, 0) != 0);
+        mVolumeKeysControlMedia.setOnPreferenceChangeListener(this);
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
@@ -439,6 +446,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             } else {
                 showDialogInner(DLG_SAFE_HEADSET_VOLUME);
             }
+        }
+        if (KEY_VOL_MEDIA.equals(key)) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_MEDIA_STREAM,
+                    (Boolean) objValue ? 1 : 0);
         }
         return true;
     }
