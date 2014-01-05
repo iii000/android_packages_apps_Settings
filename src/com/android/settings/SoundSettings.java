@@ -87,6 +87,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
+    private static final String KEY_INCREASING_RING = "increasing_ring";
 
     // Request code for power notification ringtone picker
     private static final int REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE = 1;
@@ -111,6 +112,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mLockSounds;
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
+    private Preference mIncreasingRing;
     private CheckBoxPreference mVolumeWakeScreen;
 
     private CheckBoxPreference mPowerSounds;
@@ -158,6 +160,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         int activePhoneType = TelephonyManager.getDefault().getCurrentPhoneType();
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        PreferenceScreen prefs = getPreferenceScreen();
 
         addPreferencesFromResource(R.xml.sound_settings);
 
@@ -214,6 +217,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+        }
+
+        mIncreasingRing = prefs.findPreference(KEY_INCREASING_RING);
+
+        boolean hasTelephony = getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        if (!hasTelephony) {
+            prefs.removePreference(mIncreasingRing);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {

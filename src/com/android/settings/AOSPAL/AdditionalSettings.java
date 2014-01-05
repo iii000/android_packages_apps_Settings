@@ -13,6 +13,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -20,8 +21,10 @@ import com.android.settings.Utils;
 
 public class AdditionalSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
+    private static final String TAG = "AdditionalSettings";
 
     private static final String QUICK_PULLDOWN = "quick_pulldown";
+    private static final String KEY_QS_STATUSBAR = "qs_statusbar";
     private static final String CATEGORY_HEADSETHOOK = "button_headsethook";
     private static final String BUTTON_HEADSETHOOK_LAUNCH_VOICE = "button_headsethook_launch_voice";
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
@@ -48,7 +51,9 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements
 
         mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
         if (Utils.isTablet(getActivity())) {
-            prefs.removePreference(mQuickPulldown);
+            PreferenceCategory qsstatusbar = (PreferenceCategory) prefs.findPreference(KEY_QS_STATUSBAR);
+            qsstatusbar.removePreference(mQuickPulldown);
+            Log.e(TAG, "If this thing show, then the (Utils.isTablet) function works");
         } else {
             mQuickPulldown.setOnPreferenceChangeListener(this);
             int statusQuickPulldown = Settings.System.getIntForUser(getContentResolver(),
