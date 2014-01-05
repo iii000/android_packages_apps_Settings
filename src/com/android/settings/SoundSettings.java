@@ -46,6 +46,7 @@ import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
@@ -223,7 +224,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         boolean hasTelephony = getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
         if (!hasTelephony) {
-            prefs.removePreference(mIncreasingRing);
+            PreferenceCategory calls = (PreferenceCategory) prefs.findPreference(KEY_CATEGORY_CALLS);
+            calls.removePreference(mIncreasingRing);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
