@@ -30,6 +30,7 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements
     private static final String KEY_REVERSE_DEFAULT_APP_PICKER = "reverse_default_app_picker";
     private static final String LOCKSCREEN_POWER_MENU = "lockscreen_power_menu";
     private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
+    private static final String FONT_STYLE = "font_style";
 
     ListPreference mQuickPulldown;
     private CheckBoxPreference mHeadsetHookLaunchVoice;
@@ -39,6 +40,7 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mReverseDefaultAppPicker;
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+    private ListPreference mFontStyle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,13 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (CheckBoxPreference) findPreference(ENABLE_NAVIGATION_BAR);
         mEnableNavigationBar.setChecked(enableNavigationBar);
         mEnableNavigationBar.setOnPreferenceChangeListener(this);
+
+        mFontStyle = (ListPreference) findPreference(FONT_STYLE);
+        mFontStyle.setOnPreferenceChangeListener(this);
+        mFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_STYLE,
+                0)));
+        mFontStyle.setSummary(mFontStyle.getEntry());
     }
 
     private boolean isToggled(Preference pref) {
@@ -145,6 +154,13 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW,
                     ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, val);
+            mFontStyle.setSummary(mFontStyle.getEntries()[index]);
             return true;
         }
         return false;

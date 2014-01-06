@@ -667,4 +667,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Default app picker -->
     <string name="reverse_default_app_picker">Reverse default app picker</string>
     <string name="reverse_default_app_picker_summary">Mark the last used option instead of the last used app</string>
+
+    <!-- Statusbar Clock Font -->
+    <string name="clock_font_style_title">Font</string>
+    <string name="clock_font_bold">Bold</string>
+    <string name="clock_font_light">Light</string>
+    <string name="clock_font_normal">Normal</string>
 </resources>

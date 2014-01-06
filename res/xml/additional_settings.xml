@@ -87,6 +87,12 @@
             android:title="@string/status_bar_network_cat"
             android:summary="@string/statusbar_network_summary" /> 
 
+         <ListPreference
+            android:key="font_style"
+            android:entries="@array/clock_font_style_entries"
+            android:entryValues="@array/clock_font_style_values"
+            android:title="@string/clock_font_style_title" />
+
    </PreferenceCategory>
 
     <PreferenceCategory
