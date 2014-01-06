@@ -19,29 +19,98 @@
     android:title="@string/performance_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="processor"
-        android:fragment="com.android.settings.cyanogenmod.Processor"
-        android:title="@string/processor_title" />
+    <PreferenceCategory
+        android:title="@string/processor_title"
+        android:key="processor" >
 
-    <PreferenceScreen
-        android:key="ioscheduler"
-        android:fragment="com.android.settings.cyanogenmod.IOScheduler"
-        android:title="@string/io_scheds_title" />
+        <Preference
+            android:key="pref_cpu_freq_cur"
+            style="?android:preferenceInformationStyle"
+            android:title="@string/cpu_cur_freq_title"
+            android:selectable="false" />
 
-    <PreferenceScreen
-        android:key="performance_profile"
-        android:fragment="com.android.settings.cyanogenmod.PerformanceProfile"
-        android:title="@string/perf_profile_title" />
+        <ListPreference
+            android:key="pref_cpu_gov"
+            android:dialogTitle="@string/cpu_governors_title"
+            android:title="@string/cpu_governors_title" />
 
-    <PreferenceScreen
-        android:key="memory_management"
-        android:fragment="com.android.settings.cyanogenmod.MemoryManagement"
-        android:title="@string/memory_management_title" />
+        <ListPreference
+            android:key="pref_cpu_freq_min"
+            android:dialogTitle="@string/cpu_min_freq_title"
+            android:title="@string/cpu_min_freq_title" />
 
-    <CheckBoxPreference
-        android:key="pref_use_16bpp_alpha"
-        android:title="@string/pref_use_16bpp_alpha_title"
-        android:summary="@string/pref_use_16bpp_alpha_summary" />
+        <ListPreference
+            android:key="pref_cpu_freq_max"
+            android:dialogTitle="@string/cpu_max_freq_title"
+            android:title="@string/cpu_max_freq_title" />
+
+        <CheckBoxPreference
+            android:key="pref_cpu_set_on_boot"
+            android:title="@string/performance_set_on_boot"
+            android:summary="@string/performance_set_on_boot_summary"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/io_scheds_title"
+        android:key="ioscheduler" >
+
+        <ListPreference
+            android:key="pref_io_sched"
+            android:dialogTitle="@string/io_sched_title"
+            android:title="@string/io_sched_title" />
+
+        <CheckBoxPreference
+            android:key="pref_io_sched_set_on_boot"
+            android:title="@string/performance_set_on_boot"
+            android:summary="@string/performance_set_on_boot_summary"/>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/perf_profile_title"
+        android:key="performance_profile" >
+
+        <ListPreference
+            android:key="pref_perf_profile"
+            android:dialogTitle="@string/perf_profile_title"
+            android:title="@string/perf_profile_title"
+            android:entries="@array/perf_profile_entries"
+            android:entryValues="@array/perf_profile_values"
+            android:defaultValue="@string/config_perf_profile_default_entry" />
+    
+        <CheckBoxPreference
+            android:key="pref_perf_profile_set_on_boot"
+            android:title="@string/cpu_set_on_boot"
+            android:summary="@string/cpu_set_on_boot_summary"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/memory_management_title"
+        android:key="memory_management" >
+
+        <CheckBoxPreference
+            android:key="pref_purgeable_assets"
+            android:title="@string/pref_purgeable_assets_title"
+            android:summary="@string/pref_purgeable_assets_summary" />
+
+        <CheckBoxPreference
+            android:key="pref_ksm"
+            android:title="@string/pref_ksm_title"
+            android:summary="@string/pref_ksm_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/performance_settings_others">
+
+        <CheckBoxPreference
+            android:key="pref_use_16bpp_alpha"
+            android:title="@string/pref_use_16bpp_alpha_title"
+            android:summary="@string/pref_use_16bpp_alpha_summary" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

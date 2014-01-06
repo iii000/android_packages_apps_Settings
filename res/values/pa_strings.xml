@@ -590,6 +590,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Performance settings  -->
     <string name="performance_settings_title">Performance</string>
+    <string name="performance_settings_others">Others</string>
 
     <!-- Performance Settings : Warning dialog  -->
     <string name="performance_settings_warning_title">Proceed with Caution</string>
