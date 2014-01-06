@@ -95,6 +95,7 @@
     <!-- Navigation bar settings -->
     <string name="navigation_bar">Navigation Bar</string>
     <string name="navigation_ring_title">Shortcuts</string>
+    <string name="navigation_bar_summary">Enable or Disable the Navigation Bar. Please reboot to apply the change</string>
 
     <!-- Navigation ring shortcuts -->
     <string name="navring_target_reset_message">Delete all user created navigation bar shortcuts and restore to default?</string>
@@ -181,6 +182,9 @@ USB networks). This setting is reset on reboot</string>
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is
  open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature
  when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
+    <!-- ADB over network tile -->
+    <string name="adb_tile">ADB over network tile</string>
+    <string name="adb_tile_summary">Adds an adb over network tile to quicksettings.</string>
 
     <!-- Wi-Fi region code settings-->
     <string name="wifi_setting_countrycode_title">Wi-Fi region code</string>
@@ -477,6 +481,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_network_stats_update_title">Update frequency</string>    
 
     <!-- Lockscreen Notifications -->
+    <!-- Categories --> 
+    <string name="general">General</string>
+    <string name="layout">Layout</string>
+    <string name="privacy">Privacy</string>
+
     <string name="lockscreen_notifications">Lockscreen notifications</string>
     <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
     <string name="pocket_mode">Pocket mode</string>
@@ -497,6 +506,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wake_on_notification_summary">Wake device when a new notification is received</string>
     <string name="notifications_height">Notification count</string>
     <string name="notifications_height_summary">Number of notifications displayed at once</string>
+    <string name="offset_top">Offset to the top of the screen:</string>
+    <string name="privacy_mode">Privacy Mode</string>
+    <string name="privacy_mode_summary">Disables notifications from beeing shown and dismissed. This way, you just see the icons of your notifications.</string>
 
     <!-- Network stats custm colors -->
     <string name="status_bar_network_usage_color_style">Color style</string>
@@ -618,9 +630,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Memory Management -->
     <string name="memory_management_title">Memory management</string>
     <string name="memory_management_summary">Customize the usage of memory to alter system performance</string>
-    <!-- zRam -->
-    <string name="pref_zram_title">zRam</string>
-    <string name="pref_zram_summary">Compress memory for increased virtual capacity (requires reboot)</string>
     <!-- KSM -->
     <string name="pref_ksm_title">Kernel samepage merging</string>
     <string name="pref_ksm_summary">KSM reduces physical memory requirements and improves performance</string>
@@ -647,7 +656,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="perf_profile_bal">Balanced</string>
     <string name="perf_profile_perf">Performance</string>
 
-    <!-- Volume Keys Media Control -->
-    <string name="volume_keys_control_media_stream">Media control</string>
-    <string name="volume_keys_control_media_stream_summary">Volume keys control media volume rather than notifications</string>
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify">USB debugging notify</string>
+    <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
+
+    <!-- USB Mass Storage -->
+    <string name="storage_rescan_media">Rescan media for the storage volume</string>
+    <string name="storage_rescan_media_complete">Scan completed</string>
+
+    <!-- Default app picker -->
+    <string name="reverse_default_app_picker">Reverse default app picker</string>
+    <string name="reverse_default_app_picker_summary">Mark the last used option instead of the last used app</string>
 </resources>
